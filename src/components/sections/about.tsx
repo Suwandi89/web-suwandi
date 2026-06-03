@@ -1,5 +1,6 @@
 import Image from "next/image";
-import SelectionBox from "./selection-box";
+import SelectionBox from "../ui/selection-box";
+import CursorBubble from "../ui/cursor-bubble";
 
 const education = [
     {
@@ -30,12 +31,17 @@ const courses = [
 
 export default function About() {
     return (
-        <section id="about" className="relative z-10 min-h-screen flex flex-col items-center justify-center py-24 px-6 md:px-16">
+        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center py-24 px-6 md:px-16">
 
-            {/* Heading */}
-            <h2 className="text-4xl md:text-6xl font-bold text-white text-center mb-6">
-                Get to Know <SelectionBox>Me</SelectionBox>
-            </h2>
+            <div className="text-center mb-10">
+                <h2 className="text-4xl md:text-6xl font-bold text-white inline relative">
+                    Get to Know{" "}
+                    <span className="relative inline-block">
+                        <SelectionBox>Me</SelectionBox>
+                        <CursorBubble />
+                    </span>
+                </h2>
+            </div>
 
             {/* Subtext */}
             <p className="text-white/60 text-center text-sm md:text-base leading-relaxed max-w-[600px] mb-16">
@@ -146,6 +152,6 @@ export default function About() {
                 </div>
 
             </div>
-        </section>
+        </div>
     );
 }

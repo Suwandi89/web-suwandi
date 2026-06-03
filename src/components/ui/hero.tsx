@@ -1,6 +1,7 @@
 import SelectionBox from "./selection-box";
 import { Download } from "lucide-react";
 import { TechStackDesktop } from "./tech-stack";
+import TypingText from "./typing-text";
 
 export default function Hero() {
     return (
@@ -10,7 +11,13 @@ export default function Hero() {
 
             <h1 className="text-3xl md:text-[56px] font-bold text-white leading-tight mb-5">
                 Hi, I{"'"}m{" "}
-                <SelectionBox>Suwandi</SelectionBox>
+                <SelectionBox><TypingText
+                    text="Suwandi"
+                    typeSpeed={100}
+                    deleteSpeed={60}
+                    pauseDuration={5000}
+                    delay={600}
+                /></SelectionBox>
                 <br />Kurniawan
             </h1>
 
@@ -19,7 +26,7 @@ export default function Hero() {
                 responsive, and accessible websites.
             </p>
             <a
-            
+
                 href="/cv-suwandi-kurniawan.pdf"
                 download="CV Suwandi Kurniawan.pdf"
                 className="hidden md:block bg-[#FF5E00] text-white px-7 py-3 rounded-[30px] text-[14px] font-bold cursor-pointer no-underline w-fit mb-6"

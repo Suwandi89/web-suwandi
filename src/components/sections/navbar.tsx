@@ -1,11 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none pb-4">
+        <nav className={`fixed top-0 w-full z-50 pb-4 transition-all duration-300
+            bg-black/90 backdrop-blur-sm
+            ${scrolled ? "md:bg-black/60 md:backdrop-blur-md" : "md:bg-transparent md:backdrop-blur-none"}
+        `}>
 
             <div className="flex items-start justify-between px-3 md:items-center md:px-0">
                 {/* Logo */}
