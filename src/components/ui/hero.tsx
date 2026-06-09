@@ -27,15 +27,15 @@ export default function Hero() {
             </p>
             <a
 
-                href="/cv-suwandi-kurniawan.pdf"
-                download="CV Suwandi Kurniawan.pdf"
+                href="/CV-Suwandi.pdf"
+                download="CV-Suwandi-Kurniawan.pdf"
                 className="hidden md:block bg-[#FF5E00] text-white px-7 py-3 rounded-[30px] text-[14px] font-bold cursor-pointer no-underline w-fit mb-6"
             >
                 Work with Me
             </a>
             <a
-                href="/cv-suwandi-kurniawan.pdf"
-                download="CV Suwandi Kurniawan.pdf"
+                href="/CV-Suwandi.pdf"
+                download="CV-Suwandi-Kurniawan.pdf"
                 className="md:hidden flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-full text-sm cursor-pointer bg-transparent w-fit no-underline"
             >
                 <Download size={16} />

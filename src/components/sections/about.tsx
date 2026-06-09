@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import SelectionBox from "../ui/selection-box";
 import CursorBubble from "../ui/cursor-bubble";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const education = [
     {
@@ -30,6 +32,16 @@ const courses = [
 ];
 
 export default function About() {
+    const { ref: educationRef, isVisible: educationVisible } = useIntersectionObserver<HTMLDivElement>({
+        threshold: 0.1,
+        resetOnExit: true,
+    });
+
+    const { ref: courseRef, isVisible: courseVisible } = useIntersectionObserver<HTMLDivElement>({
+        threshold: 0.1,
+        resetOnExit: true,
+    });
+
     return (
         <div className="relative z-10 min-h-screen flex flex-col items-center justify-center py-24 px-6 md:px-16">
 
@@ -55,7 +67,15 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-[800px] px-6 md:px-0">
 
                 {/* Education */}
-                <div>
+                <div
+                    ref={educationRef}
+                    style={{
+                        opacity: educationVisible ? 1 : 0,
+                        transform: educationVisible ? "translateY(0)" : "translateY(24px)",
+                        transition: "opacity 0.5s ease, transform 0.5s ease",
+                        transitionDelay: educationVisible ? "150ms" : "0ms",
+                    }}
+                >
                     <div className="flex items-center gap-3 mb-6">
                         <Image src="/icons/education.png" alt="Education" width={28} height={28} />
                         <h3 className="text-white font-bold text-xl">Education</h3>
@@ -110,7 +130,15 @@ export default function About() {
                 </div>
 
                 {/* Course */}
-                <div>
+                <div
+                    ref={courseRef}
+                    style={{
+                        opacity: courseVisible ? 1 : 0,
+                        transform: courseVisible ? "translateY(0)" : "translateY(24px)",
+                        transition: "opacity 0.5s ease, transform 0.5s ease",
+                        transitionDelay: courseVisible ? "300ms" : "0ms",
+                    }}
+                >
                     <div className="flex items-center gap-3 mb-6">
                         <Image src="/icons/course.png" alt="Course" width={28} height={28} />
                         <h3 className="text-white font-bold text-xl">Course</h3>
